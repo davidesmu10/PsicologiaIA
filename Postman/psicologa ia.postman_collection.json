@@ -1,0 +1,193 @@
+{
+  "info": {
+    "_postman_id": "c2b28b60-4283-4bf4-9d8e-95d3b5482980",
+    "name": "psicologa ia",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30225157",
+    "_collection_link": "https://go.postman.co/collection/30225157-c2b28b60-4283-4bf4-9d8e-95d3b5482980?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Agendar Cita Programada",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"userId\": 1,\r\n    \"psychologistId\": 1,\r\n    \"appointmentDate\": \"2026-06-15T14:30:00.000Z\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7145/api/appointment/schedule",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7145",
+          "path": [
+            "api",
+            "appointment",
+            "schedule"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:7145/api/appointment/schedule' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"userId\": 1,\r\n    \"psychologistId\": 1,\r\n    \"appointmentDate\": \"2026-06-15T14:30:00.000Z\"\r\n}'"
+      },
+      "response": []
+    },
+    {
+      "name": "cracion usuario",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"David Alejandro\",\r\n    \"email\": \"david@correo.com\",\r\n    \"password\": \"PasswordMelo123*\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7145/api/users",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7145",
+          "path": [
+            "api",
+            "users"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:7145/api/users' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"nombre\": \"David Alejandro\",\r\n    \"email\": \"david@correo.com\",\r\n    \"password\": \"PasswordMelo123*\"\r\n}'"
+      },
+      "response": []
+    },
+    {
+      "name": "Listar Psicólogos Disponibles",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://localhost:7145/api/appointment/professionals",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7145",
+          "path": [
+            "api",
+            "appointment",
+            "professionals"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:7145/api/appointment/professionals' \\\r\n--header 'Content-Type: application/json'"
+      },
+      "response": []
+    },
+    {
+      "name": "Solicitar Cita Inmediata",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://localhost:7145/api/appointment/immediate/1",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7145",
+          "path": [
+            "api",
+            "appointment",
+            "immediate",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:7145/api/appointment/immediate/1' \\\r\n--header 'Content-Type: application/json'"
+      },
+      "response": []
+    },
+    {
+      "name": "Módulo del Profesional",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://localhost:7145/api/appointment/psychologist/1",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7145",
+          "path": [
+            "api",
+            "appointment",
+            "psychologist",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:7145/api/appointment/psychologist/1' \\\r\n--header 'Content-Type: application/json'"
+      },
+      "response": []
+    },
+    {
+      "name": "Confirmar Cita de la Agenda",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://localhost:7145/api/appointment/confirm/1",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7145",
+          "path": [
+            "api",
+            "appointment",
+            "confirm",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl --location 'https://localhost:7145/api/appointment/confirm/1' \\\r\n--header 'Content-Type: application/json'"
+      },
+      "response": []
+    }
+  ]
+}
