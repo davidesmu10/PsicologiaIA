@@ -1,0 +1,49 @@
+services:
+
+  sqlserver:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    container_name: psicologiaIA_sqlserver
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    environment:
+      SA_PASSWORD: "StrongPassw0rd!2026"
+      ACCEPT_EULA: "Y"
+    # 🔥 Le ponemos un control de salud (Healthcheck) a SQL Server
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "StrongPassw0rd!2026", "-Q", "SELECT 1", "-C"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  api:
+    build:
+      context: ./PsicologiaIAAPI/PsicologiaIAAPI 
+      dockerfile: Dockerfile
+    container_name: psicologiaIA_api
+    ports:
+      - "7145:8080"
+    depends_on:
+      sqlserver:
+        condition: service_healthy 
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=PsicologiaIA;User Id=sa;Password=StrongPassw0rd!2026;TrustServerCertificate=True;
+      - HuggingFaceToken=tu_token_aqui
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080 
+
+  frontend:
+    build:
+      context: ./psicologia-ia-frontend
+      dockerfile: Dockerfile
+    container_name: psicologiaIA_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  sql_data:
